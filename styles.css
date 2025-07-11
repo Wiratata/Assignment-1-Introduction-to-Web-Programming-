@@ -1,0 +1,49 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #F8F8F8;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#navBar {
+    width: 100vw;
+    height: 8vw;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: silver;
+}
+#navList {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+}
+
+#navList a {
+    text-align: center;
+    list-style: none;
+    text-decoration: none;
+    width: 15vw;
+    height: 8vw;
+}
+#navList a li{
+    font-size: 2vw;
+    color:black;
+}
+
+#navList a:hover{
+    background-color: aquamarine;
+}
+
+.myImage {
+    width: 30vw;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+
+}
+
+.myImage.hidden {
+    opacity: 0;
+
+}
+
+
