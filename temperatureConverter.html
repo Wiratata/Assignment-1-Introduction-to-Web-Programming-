@@ -24,9 +24,30 @@
         <h1>THIS IS TEMPERATURE CONVERTER</h1>
     </div>
 
-    <div>
-        <p></p>
-        <p></p>
+    <div id="inputContainer">
+        <div>
+            <label for="degree">Degree
+                <input type="number" id="degree">
+                <select name="from" id="from">
+                    <option value="F" id="optF">°F</option>
+                    <option value="C" id="optC">°C</option>
+                    <option value="K" id="optK">°K</option>
+                </select>
+            </label>
+        </div>
+
+        <label for="convert">Convert To
+            <select name="to" id="to">
+            </select>
+        </label>
+        <button id="convertBtn">Convert</button>
+    </div>
+
+    
+    <div id="resultContainer">
+        <h2 id="convertResult">
+
+        </h2>
     </div>
 
     <footer>
