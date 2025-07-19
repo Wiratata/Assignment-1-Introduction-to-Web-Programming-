@@ -10,16 +10,17 @@ setTimeout(function(){
 //This coundown before reveal the image
 let count = 10;
 const countdownElement = document.getElementById("countdown");
-
-const interval = setInterval(() => {
-  count--;
-  if (count > 0) {
-    countdownElement.textContent = count;
-  } else {
-    clearInterval(interval);
-    countdownElement.style.display = "none"; // Hide the countdown
-  }
-}, 1000);
+if(countdownElement){
+  const interval = setInterval(() => {
+    count--;
+    if (count > 0) {
+      countdownElement.textContent = count;
+    } else {
+      clearInterval(interval);
+      countdownElement.style.display = "none"; // Hide the countdown
+    }
+  }, 1000);
+}
 
 
 // This here to give a footer copyright text and current date in it
@@ -181,80 +182,82 @@ var dataSet = [
   [ "Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675" ]
 ];
 
+
 const container = document.getElementById("dataTable");
 
 const headers = ["Name", "Position", "Location", "Ext", "Start Date", "Salary"];
 let currentSort = { column: null, direction: 1 };
 
-function renderTable(data) {
-  container.innerHTML = "";
+if (container) {
+  function renderTable(data) {
+    container.innerHTML = "";
 
-  // Header row
-  const headerRow = document.createElement("div");
-  headerRow.className = "row";
+    // Header row
+    const headerRow = document.createElement("div");
+    headerRow.className = "row";
 
-  headers.forEach((text, index) => {
-    const headerCell = document.createElement("div");
-    headerCell.className = "cell header";
-    headerCell.textContent = text;
+    headers.forEach((text, index) => {
+      const headerCell = document.createElement("div");
+      headerCell.className = "cell header";
+      headerCell.textContent = text;
 
-    if (text === "Name" || text === "Salary") {
-      headerCell.addEventListener("click", () => {
-        sortData(index, text === "Salary");
-      });
+      if (text === "Name" || text === "Salary") {
+        headerCell.addEventListener("click", () => {
+          sortData(index, text === "Salary");
+        });
 
-      if (currentSort.column === index) {
-        const arrow = currentSort.direction === 1 ? "▲" : "▼";
-        headerCell.innerHTML += `<span class="sortIndicator">${arrow}</span>`;
+        if (currentSort.column === index) {
+          const arrow = currentSort.direction === 1 ? "▲" : "▼";
+          headerCell.innerHTML += `<span class="sortIndicator">${arrow}</span>`;
+        }
       }
-    }
 
-    headerRow.appendChild(headerCell);
-  });
-
-  container.appendChild(headerRow);
-
-  // Data rows
-  data.forEach(record => {
-    const row = document.createElement("div");
-    row.className = "row";
-
-    record.forEach(item => {
-      const cell = document.createElement("div");
-      cell.className = "cell";
-      cell.textContent = item;
-      row.appendChild(cell);
+      headerRow.appendChild(headerCell);
     });
 
-    container.appendChild(row);
-  });
-}
+    container.appendChild(headerRow);
 
-function sortData(columnIndex, isCurrency = false) {
-  if (currentSort.column === columnIndex) {
-    currentSort.direction *= -1;
-  } else {
-    currentSort.column = columnIndex;
-    currentSort.direction = 1;
+    // Data rows
+    data.forEach(record => {
+      const row = document.createElement("div");
+      row.className = "row";
+
+      record.forEach(item => {
+        const cell = document.createElement("div");
+        cell.className = "cell";
+        cell.textContent = item;
+        row.appendChild(cell);
+      });
+
+      container.appendChild(row);
+    });
   }
 
-  const sorted = [...dataSet].sort((a, b) => {
-    let valA = a[columnIndex];
-    let valB = b[columnIndex];
-
-    if (isCurrency) {
-      valA = parseFloat(valA.replace(/[$,]/g, ""));
-      valB = parseFloat(valB.replace(/[$,]/g, ""));
+  function sortData(columnIndex, isCurrency = false) {
+    if (currentSort.column === columnIndex) {
+      currentSort.direction *= -1;
+    } else {
+      currentSort.column = columnIndex;
+      currentSort.direction = 1;
     }
 
-    return (valA > valB ? 1 : valA < valB ? -1 : 0) * currentSort.direction;
-  });
+    const sorted = [...dataSet].sort((a, b) => {
+      let valA = a[columnIndex];
+      let valB = b[columnIndex];
 
-  renderTable(sorted);
+      if (isCurrency) {
+        valA = parseFloat(valA.replace(/[$,]/g, ""));
+        valB = parseFloat(valB.replace(/[$,]/g, ""));
+      }
+
+      return (valA > valB ? 1 : valA < valB ? -1 : 0) * currentSort.direction;
+    });
+
+    renderTable(sorted);
+  }
+
+  renderTable(dataSet);
 }
-
-renderTable(dataSet);
-
 
 
 
