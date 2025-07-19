@@ -179,7 +179,7 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   width: 40vw;
-  padding: calc(60vh/4) 5vw;
+  padding: calc(60vh/6) 5vw;
 }
 
 #inputContainer h2 {
@@ -235,7 +235,7 @@ footer {
 }
 
 #convertBtn, #gradeBtn {
-  margin: 1vw auto;
+  margin: 1vmin auto;
   width: 80%;
   height: 3vw;
   background-color: #666;
