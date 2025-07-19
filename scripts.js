@@ -1,6 +1,8 @@
 //This function is use to reveal the image after 10 seconds
 setTimeout(function(){
   const image = document.querySelector(".portfolio");
+  const link = document.querySelector("#linkPortfolio")
+  link.setAttribute("href","https://youtu.be/yWsctG4H5Ss")
   image.classList.remove("hidden");
 }, 10000);
 
