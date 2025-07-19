@@ -1,8 +1,23 @@
 //This function is use to reveal the image after 10 seconds
 setTimeout(function(){
-  const image = document.querySelector(".myImage");
+  const image = document.querySelector(".portfolio");
   image.classList.remove("hidden");
 }, 10000);
+
+
+//This coundown before reveal the image
+let count = 10;
+const countdownElement = document.getElementById("countdown");
+
+const interval = setInterval(() => {
+  count--;
+  if (count > 0) {
+    countdownElement.textContent = count;
+  } else {
+    clearInterval(interval);
+    countdownElement.style.display = "none"; // Hide the countdown
+  }
+}, 1000);
 
 
 // This here to give a footer copyright text and current date in it
@@ -44,7 +59,7 @@ function convertMark(){
     grade = "F";
   }
 
-  result.textContent = `Your Grade is: ${grade}`;    
+  result.textContent = `${grade}`;    
 }
 
 // This here Temperature Converter
@@ -91,7 +106,7 @@ if (fromSelect) {
     const degree = parseFloat(degreeInput.value);
 
     if (isNaN(degree)) {
-      resultText.textContent = "Please enter a valid number.";
+      resultText.textContent = "Please enter a valid number";
       return;
     }
 
@@ -188,7 +203,7 @@ function renderTable(data) {
 
       if (currentSort.column === index) {
         const arrow = currentSort.direction === 1 ? "▲" : "▼";
-        headerCell.innerHTML += `<span class="sort-indicator">${arrow}</span>`;
+        headerCell.innerHTML += `<span class="sortIndicator">${arrow}</span>`;
       }
     }
 

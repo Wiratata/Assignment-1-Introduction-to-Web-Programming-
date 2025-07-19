@@ -20,36 +20,43 @@
         </div>
     </div>
     <div>
-        <img>
-        <h1>THIS IS TEMPERATURE CONVERTER</h1>
+
+        <h1 class="title">TEMPERATURE CONVERTER</h1>
     </div>
 
-    <div id="inputContainer">
-        <div>
-            <label for="degree">Degree
-                <input type="number" id="degree">
-                <select name="from" id="from">
-                    <option value="F" id="optF">°F</option>
-                    <option value="C" id="optC">°C</option>
-                    <option value="K" id="optK">°K</option>
-                </select>
-            </label>
+    <div id="temperatureContainer">
+        <div id="inputContainer">
+            <div>
+                <h2>ENTER TEMPERATURE</h2>
+                <h3>Degree</h3>
+                <div id="dataInput">   
+                    <input type="number" id="degree">
+                    <select name="from" id="from">
+                        <option value="F" id="optF">°F</option>
+                        <option value="C" id="optC">°C</option>
+                        <option value="K" id="optK">°K</option>
+                    </select>
+                </div>
+            </div>
+            
+            
+            <div>
+                <h3>Convert To</h3>
+                <div id="convert">
+                    <select name="to" id="to">
+                    </select>
+                </div>
+            </div>
+            <button id="convertBtn">Convert</button>
         </div>
 
-        <label for="convert">Convert To
-            <select name="to" id="to">
-            </select>
-        </label>
-        <button id="convertBtn">Convert</button>
+        
+        <div id="resultContainer">
+            <h2 id="convertResult">
+
+            </h2>
+        </div>
     </div>
-
-    
-    <div id="resultContainer">
-        <h2 id="convertResult">
-
-        </h2>
-    </div>
-
     <footer>
         <p id="footerText"></p>
     </footer>    
